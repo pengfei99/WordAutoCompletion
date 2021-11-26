@@ -1,4 +1,4 @@
-package org.pengfei;
+package org.pengfei.struct;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

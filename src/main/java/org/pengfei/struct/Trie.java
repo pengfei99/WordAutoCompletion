@@ -5,11 +5,19 @@ import java.util.*;
 public class Trie implements IWordTrie {
     private final TrieNode root;
 
+    /**
+     * The sole constructor. use '\0' as the root node value
+     * */
     public Trie() {
         // Use a special value as the root node value to distinguish with other char node from 'a' to 'z'
         root = new TrieNode('\0');
     }
-
+    /**
+     * Take a word and insert each character of the word into the trie
+     * <p>
+     *
+     * @param word  a word to be inserted into the trie
+     */
     @Override
     public void insert(String word) {
         TrieNode current = root;
@@ -35,7 +43,8 @@ public class Trie implements IWordTrie {
     }
 
     /**
-     * Returns a boolean to indicate if the given word exists in the Trie or not if yes return true, otherwise return false
+     * Returns a boolean to indicate if the given prefix exists in the Trie and the last character of the prefix has
+     * child or not, if yes returns true, otherwise return false
      * <p>
      *
      * @param prefix a prefix of a word
@@ -65,7 +74,8 @@ public class Trie implements IWordTrie {
     //If such node does not exist return null
 
     /**
-     * Returns a TrieNode that starts with the given prefix, if no such word exist in the trie, return null
+     * Returns a TrieNode that is the last character of the given input, if each character of the input has a
+     * corresponding node in the Trie. Otherwise, return null
      * <p>
      *
      * @param input a prefix of a word
@@ -106,9 +116,11 @@ public class Trie implements IWordTrie {
 
     /**
      * Returns a List words that starts with the given prefix, if no such word exist in the trie, return null
+     * The number of the words in the list is limited by the maxNum
      * <p>
      *
      * @param prefix a prefix of a word
+     * @param maxNum the maximum numbers of words that the method allows returning
      * @return a list of words that starts with the given prefix
      * @see Trie
      */
@@ -125,7 +137,8 @@ public class Trie implements IWordTrie {
     }
 
     /**
-     * Returns a List words that starts with the given prefix, if no such word exist in the trie, return null
+     * Helper method for the getNFirstWordsStartWith, it iterates through each child of the start node, and find all
+     * possible combinations of word completion starting from the start node. All complete word are stored in resultWords
      * <p>
      *
      * @param start       The starting node to find the completion of a prefix of a word
@@ -157,21 +170,5 @@ public class Trie implements IWordTrie {
         }
     }
 
-    public static void main(String[] args) {
-        Trie t = new Trie();
-        String[] words = {"project runway", "pinterest", "river", "kayak", "progenex", "progeria", "pg&e",
-                "project free tv", "bank", "proactive", "progesterone", "press democrat", "priceline",
-                "pandora", "reprobe", "paypal"};
-        for (String word : words) {
-            t.insert(word);
-        }
-        boolean res = t.startsWith("pr");
-        System.out.println("Res value: " + res);
 
-        List<String> autoComplete = t.getNFirstWordsStartWith("pr", 4);
-        System.out.println(autoComplete);
-
-        List<String> autoCompleteFull = t.getAllWordsStartWith("pr");
-        System.out.println(autoCompleteFull);
-    }
 }
