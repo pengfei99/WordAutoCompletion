@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TrieNode {
     private final char value;
-    private Map<Integer, TrieNode> children;
+    private Map<Character, TrieNode> children;
     private boolean isWord;
 
     public TrieNode(char value) {
@@ -18,17 +18,17 @@ public class TrieNode {
         return value;
     }
 
-    public Map<Integer, TrieNode> getChildren() {
+    public Map<Character, TrieNode> getChildren() {
         return children;
     }
 
-    public TrieNode getChild(Integer index){
+    public TrieNode getChild(Character index){
         return this.children.get(index);
     }
 
 
     public void addChild(TrieNode node) {
-        this.children.put(node.getValue() - 'a', node);
+        this.children.put(node.getValue(), node);
     }
 
     public boolean isWord() {

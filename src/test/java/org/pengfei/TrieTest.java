@@ -34,7 +34,7 @@ public class TrieTest {
     @Test
     @DisplayName("Test wordContain method with words that has space")
     void testContainWordWithSpace(){
-        assertFalse(t.containWord("project runway"),"Project runway is inside the trie, returns ture");
+        assertTrue(t.containWord("project runway"),"Project runway is inside the trie, returns ture");
     }
 
     @Test
