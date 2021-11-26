@@ -1,4 +1,4 @@
-# The solution
+# Word Auto Completion Challenge
 
 You are given a list of keywords. Write a program that will offer up to 4 suggested keywords from the list, 
 starting with the letters typed, **not case-sensitive**. Similar to Google Autocomplete, except that results must 
